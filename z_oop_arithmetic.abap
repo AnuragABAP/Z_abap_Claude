@@ -7,20 +7,22 @@
 *&---------------------------------------------------------------------*
 REPORT z_oop_arithmetic.
 
+* Common numeric type used by both the selection screen and the class,
+* so actual and formal parameters are type-compatible
+TYPES: ty_num TYPE p LENGTH 16 DECIMALS 2.
+
 *----------------------------------------------------------------------*
 * Selection screen: the three input values
 *----------------------------------------------------------------------*
-PARAMETERS: p_num1 TYPE p DECIMALS 2 DEFAULT '20',
-            p_num2 TYPE p DECIMALS 2 DEFAULT '10',
-            p_num3 TYPE p DECIMALS 2 DEFAULT '5'.
+PARAMETERS: p_num1 TYPE ty_num DEFAULT '20',
+            p_num2 TYPE ty_num DEFAULT '10',
+            p_num3 TYPE ty_num DEFAULT '5'.
 
 *----------------------------------------------------------------------*
 * Class definition
 *----------------------------------------------------------------------*
 CLASS lcl_arithmetic DEFINITION.
   PUBLIC SECTION.
-    TYPES: ty_num TYPE p LENGTH 16 DECIMALS 2.
-
     METHODS:
       constructor
         IMPORTING VALUE(iv_num1) TYPE ty_num
